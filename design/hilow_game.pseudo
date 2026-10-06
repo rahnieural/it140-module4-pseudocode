@@ -10,18 +10,50 @@
 
 START hilow_game
 
-    # Establish a valid guessing range.
-    TODO: Obtain the lower and upper bounds.
-    TODO: Repeat as needed until the bounds satisfy the requirement.
+// Welcome message
+OUTPUT "Welcome to the Higher/Lower game, Bella!"
 
-    # Establish the number the player is trying to guess.
-    TODO: Generate the required random number from the valid range.
+// Get lower and upper bounds with validation
+OUTPUT "Enter the lower bound:"
+INPUT lowerBound
+OUTPUT "Enter the upper bound:"
+INPUT upperBound
 
-    # Play the game.
-    TODO: Obtain and validate a guess using the selected bounds.
-    TODO: Repeat the required game behavior until the correct guess.
-        TODO: Compare a valid guess and provide the required feedback.
-        TODO: Obtain and validate another guess when play continues.
+WHILE lowerBound >= upperBound
+    OUTPUT "The lower bound must be less than the upper bound."
+    OUTPUT "Enter the lower bound:"
+    INPUT lowerBound
+    OUTPUT "Enter the upper bound:"
+    INPUT upperBound
+ENDWHILE
+
+// Generate random target number
+secretNumber = RANDOM_INT(lowerBound, upperBound)
+
+// Game loop for guesses
+guessedCorrectly = FALSE
+
+// First guess prompt
+OUTPUT "Great, now guess a number between ", lowerBound, " and ", upperBound, ":"[cite: 8]
+INPUT userGuess
+
+WHILE guessedCorrectly == FALSE
+    // Decision branching
+    IF userGuess < secretNumber THEN
+        OUTPUT "Nope, too low."[cite: 8]
+    ELSE IF userGuess > secretNumber THEN
+        OUTPUT "Nope, too high."[cite: 8]
+    ELSE
+        OUTPUT "You got it!"[cite: 8]
+        guessedCorrectly = TRUE
+    ENDIF
+
+    // If not guessed correctly, prompt for the next guess
+    IF guessedCorrectly == FALSE THEN
+        OUTPUT "Guess another number:"[cite: 8]
+        INPUT userGuess
+    ENDIF
+ENDWHILE
 
 END hilow_game
 

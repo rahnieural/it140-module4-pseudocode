@@ -34,23 +34,23 @@ secretNumber = RANDOM_INT(lowerBound, upperBound)
 guessedCorrectly = FALSE
 
 // First guess prompt
-OUTPUT "Great, now guess a number between ", lowerBound, " and ", upperBound, ":"[cite: 8]
+OUTPUT "Great, now guess a number between ", lowerBound, " and ", upperBound, ":"
 INPUT userGuess
 
 WHILE guessedCorrectly == FALSE
     // Decision branching
     IF userGuess < secretNumber THEN
-        OUTPUT "Nope, too low."[cite: 8]
+        OUTPUT "Nope, too low."
     ELSE IF userGuess > secretNumber THEN
-        OUTPUT "Nope, too high."[cite: 8]
+        OUTPUT "Nope, too high."
     ELSE
-        OUTPUT "You got it!"[cite: 8]
+        OUTPUT "You got it!"
         guessedCorrectly = TRUE
     ENDIF
 
     // If not guessed correctly, prompt for the next guess
     IF guessedCorrectly == FALSE THEN
-        OUTPUT "Guess another number:"[cite: 8]
+        OUTPUT "Guess another number:"
         INPUT userGuess
     ENDIF
 ENDWHILE
